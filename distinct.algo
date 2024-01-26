@@ -1,11 +1,11 @@
-ALGORITHM distinctSum
-// QUESTION 1
-
 ALGORITHM SumOfDistinctElements
+
+// Question 1
 VAR
     set1 : ARRAY_OF INTEGER[4];
     set2 : ARRAY_OF INTEGER[5];
     sum : INTEGER := 0;
+
 BEGIN
     set1=[3, 1, 7, 9]
     set2=[2, 4, 1, 9, 3];
@@ -13,98 +13,95 @@ BEGIN
     FOR i FROM 0 TO set1.length-1 STEP 1  DO
         FOR j FROM 0 TO set2.length-1 STEP 1  DO
             IF (set1[i] = set2[j]) THEN
-                break;
+                break;  // If an element is found in both sets, exit the loop
             END_IF
         END_FOR
 
-        IF (j=set2.length) THEN
-            sum = sum +set1[i]
+        IF (j = set2.length) THEN
+            sum = sum + set1[i];  // If element is not found in set2, add to sum
         END_IF
     END_FOR
 
     FOR i FROM 0 TO set2.length-1 STEP 1  DO
         FOR j FROM 0 TO set1.length-1 STEP 1  DO
             IF (set2[i] = set1[j]) THEN
-                break;
+                break;  // If an element is found in both sets, exit the loop
             END_IF
         END_FOR
 
-        IF (j=set1.length) THEN
-            sum = sum +set2[i]
+        IF (j = set1.length) THEN
+            sum = sum + set2[i];  // If element is not found in set1, add to sum
         END_IF
     END_FOR
 
-    Write(sum)
+    Write(sum);  // Output the sum of distinct elements
 
 END
 
 
+// Question2
+ALGORITHM product
 
-    // QUESTION 2
-    ALGORITHM product
 PROCEDURE procedure_name(arr1 : ARRAY_OF INTEGER[], arr2 : ARRAY_OF INTEGER[], total: INTEGER)
-VAR
 
 BEGIN
-    total:=0
+    total := 0;
     IF (arr1.length <> arr2.length) THEN
-        break;
+        break;  // If arrays are not of the same length, exit the procedure
     END_IF
 
     FOR i FROM 0 TO arr1.length-1  STEP 1  DO
-        total:= total + (arr1[i] *arr2[i])
+        total := total + (arr1[i] * arr2[i]);  // Calculate the product of corresponding elements
     END_FOR
-    
 
 END
-
-
 
 FUNCTION dot_product(arr1 : ARRAY_OF INTEGER[], arr2 : ARRAY_OF INTEGER[] ) : INTEGER
+
 VAR
-    total : INTEGER:= 0;
+    total : INTEGER := 0;
+
 BEGIN
     IF (arr1.length <> arr2.length) THEN
-        RETURN "They are not of the same length"
+        RETURN "They are not of the same length";  // If arrays are not of the same length, return an error message
     END_IF
 
     FOR i FROM 0 TO arr1.length-1  STEP 1  DO
-        total:= total + (arr1[i] *arr2[i])
+        total := total + (arr1[i] * arr2[i]);  // Calculate the dot product of arrays
     END_FOR
-    
-    RETURN total ;
+
+    RETURN total;  // Return the dot product
+
 END
 
-
-
-
 ALGORITHM orthogonal
+
 VAR
     v1 : ARRAY_OF INTEGER[4];
     v2 : ARRAY_OF INTEGER[4];
     v3 : ARRAY_OF INTEGER[4];
-BEGIN
-    v1=[1,0,0,1]
-    v2=[0,1,0,0]
-    v3=[0,0,0,1]
 
-    IF (dot_product(v1,v2)=0) THEN //v1 and v2 are 
-        Write("v1 and v2 are othogonal ")
+BEGIN
+    v1 = [1, 0, 0, 1]
+    v2 = [0, 1, 0, 0]
+    v3 = [0, 0, 0, 1]
+
+    IF (dot_product(v1, v2) = 0) THEN 
+        Write("v1 and v2 are orthogonal ")
     ELSE
-        Write("v1 and v2 they are not othogonal")
+        Write("v1 and v2 are not orthogonal")
     END_IF
-    IF (dot_product(v1,v3)=0) THEN //v1 and v3 are not 
-        Write("v1 and v3 are othogonal ")
+
+    IF (dot_product(v1, v3) = 0) THEN 
+        Write("v1 and v3 are orthogonal ")
     ELSE
-        Write("v1 and v3 they are not othogonal")
+        Write("v1 and v3 are not orthogonal")
     END_IF
-    IF (dot_product(v2,v3)=0) THEN //v2 and v are orthogonal
-        Write("v2 and v3 are othogonal ")
+
+    IF (dot_product(v2, v3) = 0) THEN 
+        Write("v2 and v3 are orthogonal ")
     ELSE
-        Write("v2 and v3 they are not othogonal")
-    END_IF
+        Write("v2 and v3 are not orthogonal")
+    END_IF
 
 END
-
-
-
